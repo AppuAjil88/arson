@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>student home</title>
+    <style>
+    body {
+      height: 100%;
+      background-color: #ADEFD1FF; /* For browsers that do not support gradients */
+      background: linear-gradient(to bottom right, #ADEFD1FF, #00d1c0) fixed;
+    }
+    h1{
+      color:whitesmoke;
+    }
+    .centre{
+      margin-top:5%;
+      text-align: center;
+    }
+    .container1{
+      background-color:#041e29;
+      margin:  10% 30%;
+      padding: 30px;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 22px 0 rgba(0, 0, 0, 0.2);
+    }
+    label{
+      font-size: 20px;
+      color: #80bdff;
+    }
+    button{
+      width: 125px;
+      height: 40px;
+      font-size: 15px;
+      margin-top: 5%;
+      background-color: #ADEFD1FF;
+      color: #041e29;
+    }
+    </style>
+</head>
+<body>
+ <div class="container1">
+   <div class="centre">
+    <h1>STUDENT HOME PAGE</h1>
+   </div>
+
+    <form id="student_input_form" action="{{url_for('student')}}">  
+      <br>
+      <div class="row">
+        <div class="col">
+          <label>Enter username:</label>
+        </div>
+        <div class="col">
+            <input type="text" name="username">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <label>Enter room:</label>
+        </div>
+        <div class="col">
+          <input type="text" name="room">
+        </div>
+      </div>
+      <br>
+      <button type="submit"><b>Submit</b></button>
+    </form>
+</div>
+</body>
+</html>
+
+

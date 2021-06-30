@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+    body {
+      height: 100%;
+      background-color: #ADEFD1FF; /* For browsers that do not support gradients */
+      background: linear-gradient(to bottom right, #ADEFD1FF, #00d1c0) fixed;
+    }
+    
+    h1{
+      color:whitesmoke;
+    }
+    .centre{
+      margin-top:5%;
+      text-align: center;
+    }
+    .container1{
+
+      background-color:#041e29;
+      margin:  10% 30%;
+      padding: 30px;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 22px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    button{
+      width: 125px;
+      height: 40px;
+      font-size: 15px;
+      margin-top: 5%;
+      margin-left: 70%;
+      background-color: #ADEFD1FF;
+      color: #041e29;
+    }
+
+    h3{
+      font-size: 20px;
+      color: #80bdff;
+    }
+    #messages{
+      font-size: 30px;
+      color: #84ff80;
+    }
+    #alert_messages{
+      font-size: 30px;
+      color: #ffa880;
+    }
+  </style>
+</head>
+<body>
+  <div class="container1">
+  <div class="centre">
+    <h1>TEACHERS DASHBOARD</h1>
+  </div>
+   <form action="{{url_for('logout')}}" >
+  <button  type="submit" role="button">Log Out</button>
+       </form>
+  <br>
+  <br>
+  <h3>Hey {{ current_user.username}}!</h3>
+  <br>
+  <div id = "messages"> </div>
+  <br>
+  <div id="alert_messages"> </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf-8">
+      var socket = io('http://127.0.0.1:5000/');
+
+      socket.on('connect', function () {
+          socket.emit('join_room', {
+              username: "{{ current_user.username }}",
+              room: "{{ current_user.username }}"
+          });
+      });
+
+      socket.on('join_room_announcement', function (data) {
+          console.log(data);
+          if (data.username !== "{{ current_user.username }}") {
+              const newNode = document.createElement('div');
+              newNode.innerHTML = `<b>${data.username}</b> has joined the room`;
+              document.getElementById('messages').appendChild(newNode);
+          }
+      });
+
+      socket.on('receive_message', function (data) {
+          console.log(data);
+          const newNode = document.createElement('div');
+          newNode.innerHTML = `<b>${data.username}</b> is disengaged`;
+          document.getElementById('alert_messages').appendChild(newNode);
+
+      });
+
+      socket.on('leave_room_announcement', function (data) {
+          console.log(data);
+          const newNode = document.createElement('div');
+          newNode.innerHTML = `<b>${data.username}</b> has left the room`;
+          document.getElementById('messages').appendChild(newNode);
+      });
+
+  </script>
+</body>
+</html>

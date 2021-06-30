@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      height: 100%;
+      background-color: #ADEFD1FF; /* For browsers that do not support gradients */
+      background: linear-gradient(to bottom right, #ADEFD1FF, #00d1c0) fixed;
+    }
+    
+    h1{
+      color:whitesmoke;
+    }
+    .container1{
+
+      background-color:#041e29;
+      margin:  .5% 30%;
+      padding: 30px;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 22px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    a{
+      font-size: 20px;
+      color: #80bdff;
+    }
+    i{
+      width: 100%;
+      color:#041e29;
+    }
+    .centre{
+      margin-top:5%;
+      text-align: center;
+    }
+  </style>
+</head>
+
+  <body>
+    <div class="centre">
+      <i class="fas fa-user fa-6x"></i>
+    </div>
+    <div class="container1">
+      <h1>Sign In As</h1><br>
+      <a href="{{ url_for('student_home') }}" > STUDENT </a>
+      <br>
+      <a href="{{ url_for('teacher_login') }}" > TEACHER </a>
+    </div>
+  </body>
+</html>
